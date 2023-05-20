@@ -1,6 +1,9 @@
 # Dart Calc
 
-Im Projekt _Dart Calc_ geht es um Berechnungen rund um das Spiel _Darts_.
+Im Projekt _Dart Calc_ geht es um Berechnungen rund um das Spiel _Darts_. Dabei
+soll bestehender ‒ funktionierender, aber schlechter ‒ Code verbessert werden.
+Es werden Unit Tests zur Verfügung gestellt, sodass das Verbessern des Codes
+furchtlos angehen kann.
 
 ## Spielvariante 501: Regeln
 
@@ -26,3 +29,24 @@ Spieler) folgendermassen:
        verbleibt.)
 
 ![Ein Dartsbrett](dartboard.png)
+
+## Berechnungen
+
+Im vorliegenden Projekt geht es um zwei Berechnungen:
+
+1. Berechnung der Punktezahl aus einer Runde anhand einer Zeichenkette.
+    - Der Spieler gibt seine Treffer im folgenden Format ein (Beispiele):
+        - `3 20 1 17 2 4`: _Triple 20_, _Single 17_, _Double 4_: `3*20+1*17+2*4=85`
+        - `2 15 1 18 3 19`: _Double 15_, _Single 18_, _Triple 19_: `2*15+1*18+3*19=105`
+        - `3 20 1 5`: _Tripe 20_, _Single 5_, [einmal daneben]: `3*20+1*5=65`
+        - D.h. Multiplikator und Sektor wechseln sich jeweils ab.
+    - Eine Funktion soll aus dem String die Punktezahl berechnen.
+2. Ermittlung eines Treffers für den _Double Checkout_ bei gegebener Punktzahl.
+    - Der Spieler hat bisher eine bestimmte Punktezahl `x` geworfen.
+    - Es verbleiben noch eine bestimmte Anzahl Punkte (`501-x`).
+    - Es soll berechnet werden, mit welchem Wurf die Runde mittels _Double
+      Checkout_ beendet werden kann.
+    - Beispiel: `x=477`, `501-477=24`, `24:2=12`, _Double 12_
+    - Beispiel: `x=480`, `501-480=31`, `31:2=15.5`, [unmöglich, da ungerade]
+    - Beispiel: `x=441`, `501-441=60`, `60:2=30`, [unmöglich, da `30>20`]
+
