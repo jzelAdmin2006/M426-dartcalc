@@ -50,3 +50,39 @@ Im vorliegenden Projekt geht es um zwei Berechnungen:
     - Beispiel: `x=480`, `501-480=31`, `31:2=15.5`, [unmöglich, da ungerade]
     - Beispiel: `x=441`, `501-441=60`, `60:2=30`, [unmöglich, da `30>20`]
 
+## Projekte
+
+In den folgenden Unterordnern gibt es zwei Implementierungen:
+
+1. `csharp/`: C#
+    - Test: `DartCalc.Tests/ScoreTest.cs`
+        - `test_calc`
+        - `test_checkout`
+    - Implementierung: `DartCalc/Score.cs`
+        - `calc`
+        - `checkout`
+    - Tests ausführen: `dotnet test`
+2. `python/`: Python
+    - Test: `tests/test_score.py`
+        - `TestCalc`
+        - `TestCheckout`
+    - Implementierung: `dartcalc/score.py`
+        - `Calc`
+        - `Checkout`
+    - Virtuelle Umgebung einrichten: `python -m venv env`
+    - Virtuelle Umgebung aktivieren (PowerShell): `env/Scripts/Activate.ps1`
+    - Virtuelle Umgebung aktivieren (Bash): `env/Scripts/activate`
+    - `pytest` installieren: `pip install pytest`
+    - Tests ausführen: `pytest`
+
+Bei den Testfällen handelt es sich um _parametrisierte Tests_. Hierbei wird der
+gleiche Test für mehrere Eingabe- und Erwartungswerte eingeführt. **An den Tests
+brauchen Sie nichts zu ändern.**
+
+Die Implementierungen sind rein technisch soweit korrekt, zumal sie alle
+Testfälle befriedigen. **Der Code ist jedoch mangelhaft.**
+
+## Aufgabe
+
+Verbessern Sie die Implementierungen der beiden Berechnungen, ohne dabei die
+Testfälle zum Scheitern zu bringen.
