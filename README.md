@@ -77,7 +77,7 @@ In den folgenden Unterordnern gibt es zwei Implementierungen:
         - `Checkout`
     - Virtuelle Umgebung einrichten: `python -m venv env`
     - Virtuelle Umgebung aktivieren (PowerShell): `env/Scripts/Activate.ps1`
-    - Virtuelle Umgebung aktivieren (Bash): `env/Scripts/activate`
+    - Virtuelle Umgebung aktivieren (Bash): `. env/Scripts/activate`
     - `pytest` installieren: `pip install pytest`
     - Tests ausführen: `pytest`
 
