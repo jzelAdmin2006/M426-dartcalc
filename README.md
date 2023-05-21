@@ -3,7 +3,7 @@
 Im Projekt _Dart Calc_ geht es um Berechnungen rund um das Spiel _Darts_. Dabei
 soll bestehender ‒ funktionierender, aber schlechter ‒ Code verbessert werden.
 Es werden Unit Tests zur Verfügung gestellt, sodass das Verbessern des Codes
-furchtlos angehen kann.
+furchtlos angegangen werden kann.
 
 ## Spielvariante 501: Regeln
 
@@ -22,11 +22,17 @@ Spieler) folgendermassen:
        Punktzahl des Sektors (z.B. _Triple 20_: 60).
 3. Die Runde ist zu Ende, wenn der Spieler auf null Punkten ist.
     1. Die Punktzahl 0 muss _exakt_ erreicht werden. Wird die Punktzahl 0
-       unterschritten, gibt es keine Punkte.
+       unterschritten (_bust_), gibt es keine Punkte. Der Zwischenstand wird auf
+       denjenigen vor dem Wurf zurückgesetzt. (Beispiel: Bei 37 offenen Punkten
+       trifft der Spieler zuerst die 20 und dann die 18 ‒ _bust_. Der Spieler
+       ist wieder bei 37 Punkten.)
     2. Die Punktzahl 0 muss über einen _Double Checkout_ erreicht werden, d.h.
        mit dem letzten Wurf muss man den _Double Ring_ treffen. (D.h. man kann
        die Runde nur beenden, wenn beim letzten Wurf eine gerade Punktzahl
        verbleibt.)
+
+Zur Illustration eine Dartscheibe mit den Sektoren, Ringen und dem _Bull's Eye_
+in der Mitte:
 
 ![Ein Dartsbrett](dartboard.png)
 
@@ -39,8 +45,8 @@ Im vorliegenden Projekt geht es um zwei Berechnungen:
         - `3 20 1 17 2 4`: _Triple 20_, _Single 17_, _Double 4_: `3*20+1*17+2*4=85`
         - `2 15 1 18 3 19`: _Double 15_, _Single 18_, _Triple 19_: `2*15+1*18+3*19=105`
         - `3 20 1 5`: _Triple 20_, _Single 5_, [einmal daneben]: `3*20+1*5=65`
-        - D.h. Multiplikator und Sektor wechseln sich jeweils ab.
-    - Eine Funktion soll aus dem String die Punktezahl berechnen.
+        - D.h. Ring-Multiplikator und Sektor wechseln sich jeweils ab.
+    - Eine Funktion soll aus der Zeichenkette die Punktezahl berechnen.
 2. Ermittlung eines Treffers für den _Double Checkout_ bei gegebener Punktzahl.
     - Der Spieler hat bisher eine bestimmte Punktezahl `x` geworfen.
     - Es verbleiben noch eine bestimmte Anzahl Punkte (`501-x`).
@@ -80,15 +86,20 @@ gleiche Test für mehrere Eingabe- und Erwartungswerte eingeführt. **An den Tes
 brauchen Sie nichts zu ändern.**
 
 Die Implementierungen sind rein technisch soweit korrekt, zumal sie alle
-Testfälle befriedigen. (Das _Double Bullseye_ zum Checkout wird jedoch nicht
+Testfälle befriedigen. (Das _Double Bull's Eye_ zum Checkout wird jedoch nicht
 unterstützt.) **Der Code ist jedoch mangelhaft.**
 
 ## Aufgabe
 
-Sie können die Aufgaben 1 und 2 in beliebiger Reihenfolge machen. (In welcher Reihenfolge ist es wohl einfacher?)
+Sie können die Aufgaben 1 und 2 in beliebiger Reihenfolge machen. (In welcher
+Reihenfolge ist es wohl einfacher?)
 
 1. _Test-Driven Development_
-    - Ergänzen Sie den Testfall für das Checkout um ein Beispiel mit _Double Bullseye_, d.h. `50` soll mit `2 25` erreichbar sein.
-    - Passen Sie die Implementierung entsprechend an, damit der Test wieder durchläuft.
+    - Ergänzen Sie den Testfall für das Checkout um ein Beispiel mit _Double
+      Bull's Eye_, d.h. `50` soll mit `2 25` erreichbar sein.
+    - Passen Sie die Implementierung entsprechend an, damit der Test wieder
+      durchläuft.
 2. _Clean Code_
-    - Verbessern Sie die Implementierungen der beiden Berechnungen, ohne dabei die Testfälle zum Scheitern zu bringen.
+    - Verbessern Sie die Implementierungen der beiden Berechnungen, ohne dabei
+      die Testfälle zum Scheitern zu bringen.
+
