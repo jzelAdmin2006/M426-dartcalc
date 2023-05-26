@@ -1,7 +1,6 @@
 namespace DartCalc.Tests;
 
-public class ScoreTest
-{
+public class ScoreTest {
     [Theory]
     [InlineData("", 0)]
     [InlineData("1 17", 17)]
@@ -14,12 +13,12 @@ public class ScoreTest
     }
 
     [Theory]
-    [InlineData(500, "")]    
-    [InlineData(499, "2 1")]    
-    [InlineData(461, "2 20")]    
-    [InlineData(467, "2 17")]    
-    [InlineData(489, "2 6")]    
-    [InlineData(301, "")]    
+    [InlineData(500, "")]
+    [InlineData(499, "2 1")]
+    [InlineData(461, "2 20")]
+    [InlineData(467, "2 17")]
+    [InlineData(489, "2 6")]
+    [InlineData(301, "")]
     public void TestCheckout(int score, string expected)
     {
         Assert.Equal(expected, Score.Checkout(score));
