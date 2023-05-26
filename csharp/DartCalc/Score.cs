@@ -3,6 +3,7 @@
 public class Score {
     private const int INITIAL_POINTS = 501;
     private const int MIN_DOUBLE_RING_SCORE = 2;
+    private const int MAX_DOUBLE_RING_SCORE = 40;
     private const int DOUBLE_BULLSEYE_SCORE = 50;
 
     public static int Calc(string throwsInput)
@@ -23,7 +24,7 @@ public class Score {
 
     private static bool CheckoutIsPossible(int remainingPoints)
     {
-        return IsEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_SCORE, DOUBLE_BULLSEYE_SCORE);
+        return IsEven(remainingPoints) && (IsBetween(remainingPoints, MIN_DOUBLE_RING_SCORE, MAX_DOUBLE_RING_SCORE) || remainingPoints == DOUBLE_BULLSEYE_SCORE);
     }
 
     private static bool IsEven(int num)
