@@ -19,6 +19,7 @@ public class ScoreTest {
     [InlineData(467, "2 17")]
     [InlineData(489, "2 6")]
     [InlineData(301, "")]
+    [InlineData(451, "2 25")]
     public void TestCheckout(int score, string expected)
     {
         Assert.Equal(expected, Score.Checkout(score));

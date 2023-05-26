@@ -2,8 +2,8 @@
 
 public class Score {
     private const int INITIAL_POINTS = 501;
-    private const int MIN_DOUBLE_RING_POINTS = 2;
-    private const int MAX_DOUBLE_RING_SCORE = 40;
+    private const int MIN_DOUBLE_RING_SCORE = 2;
+    private const int DOUBLE_BULLSEYE_SCORE = 50;
 
     public static int Calc(string throwsInput)
     {
@@ -15,10 +15,10 @@ public class Score {
                          .Sum(i => throws[i * 2] * throws[i * 2 + 1]);
     }
 
-    public static string Checkout(int achievedPoints)
+    public static string Checkout(int achievedScore)
     {
-        int remainingPoints = INITIAL_POINTS - achievedPoints;
-        return isEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_POINTS, MAX_DOUBLE_RING_SCORE) ? "2 " + remainingPoints / 2 : "";
+        int remainingPoints = INITIAL_POINTS - achievedScore;
+        return isEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_SCORE, DOUBLE_BULLSEYE_SCORE) ? "2 " + remainingPoints / 2 : "";
     }
 
     private static bool isEven(int num)
