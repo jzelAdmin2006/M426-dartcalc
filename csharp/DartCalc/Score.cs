@@ -2,80 +2,30 @@
 
 public class Score
 {
-    public static int Calc(string a)
+    public static int Calc(string throwsInput)
     {
-        int b = 0;
-        int f = 0;
-        for (int c = 0; c < a.Split().Length; c++)
-        {
-            string d = a.Split()[c];
-            if (c == 0 && d != "")
-            {
-                f = Int32.Parse(d);
-            }
-            else
-            {
-                if (c == 1)
-                {
-                    b = b + f * Int32.Parse(d);
-                }
-                else
-                {
-                    if (c == 2)
-                    {
-                        f = Int32.Parse(d);
-                    }
-                    else
-                    {
-                        if (c == 3)
-                        {
-                            b = b + f * Int32.Parse(d);
-                        }
-                        else
-                        {
-                            if (c == 4)
-                            {
-                                f = Int32.Parse(d);
-                            }
-                            else
-                            {
-                                if (c == 5)
-                                {
-                                    b = b + f * Int32.Parse(d);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return b;
+        List<int> throws = throwsInput.Split()
+                                    .Where(@throw => !string.IsNullOrEmpty(@throw))
+                                    .Select(int.Parse)
+                                    .ToList();
+        return Enumerable.Range(0, throws.Count / 2)
+                         .Sum(i => throws[i * 2] * throws[i * 2 + 1]);
     }
 
-    public static string Checkout(int a)
+    public static string Checkout(int achievedPoints)
     {
-        int b = 0x1f5 - a;
-        if ((b & 1) == 0)
-        {
-            if ((b >> 1) > 0)
-            {
-                if ((b >> 1) <= 0x14)
-                {
-                    return 0b10 + " " + (b >> 1);
-                }
-                else
-                {
-                    return "";
-                }
-            }
-            else
-            {
-                return "";
-            }
-        }
-        else
-        {
-            return "";
-        }
+        int remainingPoints = 501 - achievedPoints;
+        int halfRemainingPoints = remainingPoints / 2;
+        return isEven(remainingPoints) && IsBetween(halfRemainingPoints, 1, 20) ? "2 " + halfRemainingPoints : "";
+    }
+
+    private static bool isEven(int num)
+    {
+        return num % 2 == 0;
+    }
+
+    private static bool IsBetween(int num, int lower, int upper)
+    {
+        return lower <= num && num <= upper;
     }
 }
