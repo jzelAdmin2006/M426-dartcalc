@@ -1,7 +1,10 @@
 ﻿namespace DartCalc;
 
-public class Score
-{
+public class Score {
+    private const int INITIAL_POINTS = 501;
+    private const int MIN_DOUBLE_RING_POINTS = 2;
+    private const int MAX_DOUBLE_RING_SCORE = 40;
+
     public static int Calc(string throwsInput)
     {
         List<int> throws = throwsInput.Split()
@@ -14,9 +17,8 @@ public class Score
 
     public static string Checkout(int achievedPoints)
     {
-        int remainingPoints = 501 - achievedPoints;
-        int halfRemainingPoints = remainingPoints / 2;
-        return isEven(remainingPoints) && IsBetween(halfRemainingPoints, 1, 20) ? "2 " + halfRemainingPoints : "";
+        int remainingPoints = INITIAL_POINTS - achievedPoints;
+        return isEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_POINTS, MAX_DOUBLE_RING_SCORE) ? "2 " + remainingPoints / 2 : "";
     }
 
     private static bool isEven(int num)
