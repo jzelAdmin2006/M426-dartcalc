@@ -18,15 +18,15 @@ public class Score {
     public static string Checkout(int achievedScore)
     {
         int remainingPoints = INITIAL_POINTS - achievedScore;
-        return checkoutIsPossible(remainingPoints) ? "2 " + remainingPoints / 2 : string.Empty;
+        return CheckoutIsPossible(remainingPoints) ? "2 " + remainingPoints / 2 : string.Empty;
     }
 
-    private static bool checkoutIsPossible(int remainingPoints)
+    private static bool CheckoutIsPossible(int remainingPoints)
     {
-        return isEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_SCORE, DOUBLE_BULLSEYE_SCORE);
+        return IsEven(remainingPoints) && IsBetween(remainingPoints, MIN_DOUBLE_RING_SCORE, DOUBLE_BULLSEYE_SCORE);
     }
 
-    private static bool isEven(int num)
+    private static bool IsEven(int num)
     {
         return num % 2 == 0;
     }
